@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="{{ language }}">
+<head>
+    <meta charset="UTF-8">
+    <title>Playlist App</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body class="{{ theme }}">
+    <h1>🎶 Playlist App</h1>
+
+    <h2>Настройки</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {{ pref_form.as_p }}
+        <button type="submit">Сохранить</button>
+    </form>
+
+    <h2>Добавить композицию</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {{ song_form.as_p }}
+        <button type="submit">Добавить</button>
+    </form>
+
+    <h2>Список песен</h2>
+    <ul>
+        {% for song in songs %}
+            <li>{{ song.title }} — {{ song.artist }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
