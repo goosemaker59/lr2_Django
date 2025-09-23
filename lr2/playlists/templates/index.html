@@ -9,13 +9,6 @@
 <body class="{{ theme }}">
     <h1>🎶 Playlist App</h1>
 
-    <h2>Настройки</h2>
-    <form method="POST">
-        {% csrf_token %}
-        {{ pref_form.as_p }}
-        <button type="submit">Сохранить</button>
-    </form>
-
     <h2>Добавить композицию</h2>
     <form method="POST">
         {% csrf_token %}
@@ -29,5 +22,12 @@
             <li>{{ song.title }} — {{ song.artist }}</li>
         {% endfor %}
     </ul>
+
+    <h2>Настройки</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {{ pref_form.as_p }}
+        <button type="submit">Сохранить</button>
+    </form>
 </body>
 </html>
